@@ -1,21 +1,18 @@
-/**
- * Created by 梅轩 on 2019/1/1.
- */
-//引入 vue
-import Vue from 'vue';
-//引入 vuex
-import Vuex from 'vuex'
-//引入那几个管理状态的文件
+
 import state from './state'
-import mutations from './mutations'
 import actions from './actions'
+import mutations from './mutations'
 import getters from './getters'
-//声明使用
-Vue.use(Vuex);
-//创建store对象
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+Vue.use(Vuex)
+
 export default new Vuex.Store({
   state,
-  mutations,
   actions,
-  getters,
+  mutations,
+  getters
+
 })
+

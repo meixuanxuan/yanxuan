@@ -1,24 +1,17 @@
-<!--模板-->
 <template>
-  <div id="app">
-    <!--路由界面显示-->
+  <div>
     <router-view/>
-    <!--底部导航-->
-    <FooterNav v-show="this.$route.meta.isShow"/>
+    <FooterList/>
   </div>
 </template>
-<!--默认暴露的Vue组件js代码-->
 <script>
-  //子组件需要引入父组件的时候可以引入组件
-  import FooterNav from './components/FooterNav/FooterNav.vue'
+  import FooterList from './components/FooterList/FooterList.vue'
   export default {
-    //注册组件
     components:{
-      FooterNav
+      FooterList
     }
   }
 </script>
-
 <style lang="stylus" rel="stylesheet/stylus" scoped>
-  /*css样式*/
+
 </style>

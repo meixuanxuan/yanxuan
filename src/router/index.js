@@ -1,65 +1,73 @@
-//引入 vue
-import Vue from 'vue';
-//引入 vue-router
-import VueRouter from 'vue-router';
-//引入路由组件
-import Classify from '../pages/Classify/Classify.vue'
-import Home from '../pages/Home/Home.vue'
-import ShiWu from '../pages/ShiWu/ShiWu.vue'
-import Cart from '../pages/Cart/Cart.vue'
-import Personal from '../pages/Personal/Personal.vue'
-//声明使用vue插件
-Vue.use(VueRouter);
-//创建路由对象
+
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import MSite from '../pages/MSite/MSite.vue'
+import Sort from '../pages/Sort/Sort.vue'
+import Find from '../pages/Find/Find.vue'
+import Shopping from '../pages/Shopping/Shopping.vue'
+import Person from '../pages/Person/Person.vue'
+import FindTab from '../pages/Find/FindTab/FindTab.vue'
+import Expert from '../pages/Find/FindTab/Expert.vue'
+import Update from '../pages/Find/FindTab/Update.vue'
+import Share from '../pages/Find/FindTab/Share.vue'
+import Home from '../pages/Find/FindTab/Home.vue'
+
+
+
+Vue.use(VueRouter)
+
 export default new VueRouter({
-  mode:'history',//路径中没有 # 的默认有 设置 hash 也有 #
-  //应用中的所有路由
   routes:[
-    //一级路由
     {
-      path:'/classify',
-      component:Classify,
-      //路由里面有一个属性 meta 动态给它添加一个属性是否显示底部导航
-      meta:{
-        isShow:true
-      }
+      path:'/msite',
+      component:MSite
     },
     {
-      path:'/home',
-      component:Home,
-      //路由里面有一个属性 meta 动态给它添加一个属性是否显示底部导航
-      meta:{
-        isShow:true
-      }
+      path:'/sort',
+      component:Sort,
     },
     {
-      path:'/shiwu',
-      component:ShiWu,
-      //路由里面有一个属性 meta 动态给它添加一个属性是否显示底部导航
-      meta:{
-        isShow:true
-      }
+      path:'/find',
+      component:Find,
+      children:[
+        {
+          path:'/find/findtab',
+          component:FindTab,
+        },
+        {
+          path:'/find/expert',
+          component:Expert,
+        },
+        {
+          path:'/find/update',
+          component:Update,
+        },
+        {
+          path:'/find/share',
+          component:Share,
+        },
+        {
+          path:'/find/home',
+          component:Home,
+        },
+        {
+          path:'/',
+          redirect:'/find/findtab'
+        },
+
+      ]
     },
     {
-      path:'/personal',
-      component:Personal,
-      //路由里面有一个属性 meta 动态给它添加一个属性是否显示底部导航
-      meta:{
-        isShow:true
-      }
+      path:'/shopping',
+      component:Shopping
     },
     {
-      path:'/cart',
-      component:Cart,
-      //路由里面有一个属性 meta 动态给它添加一个属性是否显示底部导航
-      meta:{
-        isShow:true
-      }
+      path:'/person',
+      component:Person
     },
-    //默认一上来显示
     {
-      path: '/',
-      redirect: '/home'
-    }
+      path:'/',
+      redirect:'/msite'
+    },
   ]
 })
